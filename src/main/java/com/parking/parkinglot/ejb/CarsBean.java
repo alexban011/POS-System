@@ -69,17 +69,16 @@ public class CarsBean {
     }
 
     public CarDto findById(Long carId) {
-        CarDto car = null;
-
-        List<CarDto> allCars = findAllCars();
-
-        for (CarDto allCar : allCars) {
-            if (Objects.equals(allCar.getId(), carId)) {
-                car = allCar;
-            }
+        LOG.info("findbyId");
+        try {
+            TypedQuery<Car> typedQuery =
+                    entityManager.createQuery("SELECT c FROM Car c WHERE c.id = :carId", Car.class)
+                            .setParameter("carId", carId);
+            Car car = typedQuery.getSingleResult();
+            return new CarDto(car.getId(),car.getLicensePlate(), car.getParkingSpot(), car.getOwner().getUsername());
+        } catch (Exception ex) {
+            throw new EJBException(ex);
         }
-
-        return car;
     }
 
     public void updateCar(
