@@ -1,5 +1,5 @@
-package com.echipa9.src;
-//
+package com.parking.parkinglot;
+
 import java.io.*;
 
 import jakarta.servlet.http.*;
