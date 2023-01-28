@@ -9,8 +9,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Arrays;
 
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_USERS"}),
-        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_USERS"})})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_USERS"}))
 @WebServlet(name = "AddUser", value = "/AddUser")
 public class AddUser extends HttpServlet {
     @Inject

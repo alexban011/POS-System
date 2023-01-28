@@ -17,8 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 @DeclareRoles({"READ_USERS", "WRITE_USERS"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
-        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_USERS"})})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}))
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
 
