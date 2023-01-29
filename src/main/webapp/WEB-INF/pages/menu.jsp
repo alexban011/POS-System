@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow z-index-100">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.jsp">NextGen POS</a>
             <button
