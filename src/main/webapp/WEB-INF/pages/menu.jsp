@@ -42,10 +42,14 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
-                    </li>
-                    <li class="nav-item">
+                        <c:choose>
+                            <c:when test="${pageContext.request.getRemoteUser() == null}">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Login">Login</a>
+                            </c:when>
+                            <c:otherwise>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
+                            </c:otherwise>
+                        </c:choose>
                     </li>
                 </ul>
             </div>
