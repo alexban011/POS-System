@@ -27,7 +27,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Candidates.jsp">Candidates</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Posts.jsp">Posts</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Jobs">Posts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Employees.jsp">Employees</a>

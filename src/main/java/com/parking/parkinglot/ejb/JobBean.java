@@ -1,15 +1,17 @@
 package com.parking.parkinglot.ejb;
 
-import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.JobDto;
-import com.parking.parkinglot.entities.Car;
 import com.parking.parkinglot.entities.Job;
-import com.parking.parkinglot.entities.User;
 import jakarta.ejb.EJBException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.NotSupportedException;
+import jakarta.transaction.SystemException;
+import jakarta.transaction.UserTransaction;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,26 +40,30 @@ public class JobBean {
 
         for (Job job : jobs) {
             JobDto dto = new JobDto(job.getId(),
-                    job.getJobTitle(),
-                    job.getSalary());
+                    job.getJobTitle());
             jobsDto.add(dto);
         }
 
         return jobsDto;
     }
 
-    public void createJob(
-            String jobTitle,
-            Long salary
-    ) {
+    public void createJob(String jobTitle) throws NamingException, SystemException, NotSupportedException {
         LOG.info("createProduct");
+        InitialContext initialContext = new InitialContext();
+        UserTransaction userTransaction = (UserTransaction) initialContext.lookup("java:comp/UserTransaction");
+        userTransaction.begin();
 
-        Job product = new Job();
+        try {
+            Job product = new Job();
 
-        product.setJobTitle(jobTitle);
-        product.setSalary(salary);
+            product.setJobTitle(jobTitle);
 
-        entityManager.persist(product);
+            entityManager.persist(product);
+
+            userTransaction.commit();
+        } catch (Exception e) {
+            userTransaction.rollback();
+        }
     }
 
     public JobDto findById(Long jobId) {
@@ -67,7 +73,7 @@ public class JobBean {
                     entityManager.createQuery("SELECT j FROM Job j WHERE j.id = :jobId", Job.class)
                             .setParameter("jobId", jobId);
             Job job = typedQuery.getSingleResult();
-            return new JobDto(job.getId(),job.getJobTitle(), job.getSalary());
+            return new JobDto(job.getId(),job.getJobTitle());
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
@@ -75,22 +81,29 @@ public class JobBean {
 
     public void updateJob(
             Long jobId,
-            String jobTitle,
-            Long salary
+            String jobTitle
     ) {
         LOG.info("updateJob");
 
         Job job = entityManager.find(Job.class, jobId);
         job.setJobTitle(jobTitle);
-        job.setSalary(salary);
     }
 
-    public void deleteJobsByIds(Collection<Long> jobIds) {
+    public void deleteJobsByIds(Collection<Long> jobIds) throws NamingException, SystemException, NotSupportedException {
         LOG.info("deleteJobsByIds");
+        InitialContext initialContext = new InitialContext();
+        UserTransaction userTransaction = (UserTransaction) initialContext.lookup("java:comp/UserTransaction");
+        userTransaction.begin();
 
-        for (Long jobId : jobIds) {
-            Job job = entityManager.find(Job.class, jobId);
-            entityManager.remove(job);
+        try {
+            for (Long jobId : jobIds) {
+                Job job = entityManager.find(Job.class, jobId);
+                entityManager.remove(job);
+            }
+
+            userTransaction.commit();
+        } catch (Exception e) {
+            userTransaction.rollback();
         }
     }
 }
