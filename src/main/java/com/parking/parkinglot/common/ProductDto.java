@@ -2,6 +2,7 @@ package com.parking.parkinglot.common;
 
 public class ProductDto {
     Long id;
+    String name;
     Float price;
     Integer quantity;
     String category;
@@ -18,12 +19,17 @@ public class ProductDto {
         return quantity;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getCategory() {
         return category;
     }
 
-    public ProductDto(Long id, Float price, Integer quantity, String category){
+    public ProductDto(Long id, String name, Float price, Integer quantity, String category){
         this.id = id;
+        this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.category = category;

@@ -38,6 +38,7 @@ public class ProductsBean {
 
         for (Product product : products){
             ProductDto dto = new ProductDto(product.getId(),
+                    product.getName(),
                     product.getPrice(),
                     product.getQuantity(),
                     product.getCategory());

@@ -39,7 +39,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Sell.jsp">Sell</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Products.jsp">Products</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
