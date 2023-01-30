@@ -51,6 +51,9 @@
                             </c:otherwise>
                         </c:choose>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Register">Register</a>
+                    </li>
                 </ul>
             </div>
         </div>

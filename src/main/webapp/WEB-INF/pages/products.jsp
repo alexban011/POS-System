@@ -9,6 +9,20 @@
             <button class="btn btn-danger" type="submit">Delete Products</button>
         </c:if>
         <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    Nume produs
+                </div>
+                <div class="col">
+                    Pret
+                </div>
+                <div class="col">
+                    Cantitate
+                </div>
+                <div class="col">
+                    Categorie
+                </div>
+            </div>
             <c:forEach var="product" items="${products}">
                 <div class="row">
                     <div class="col">
