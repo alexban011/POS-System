@@ -24,28 +24,28 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Candidates.jsp">Candidates</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Candidates.jsp">Candidates</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Posts.jsp">Posts</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Posts.jsp">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Employees.jsp">Employees</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Employees.jsp">Employees</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Return.jsp">Return</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Return.jsp">Return</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Sell.jsp">Sell</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Sell.jsp">Sell</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Products.jsp">Products</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Products.jsp">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Logout">Logout</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Login">Login</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Login">Login</a>
                     </li>
                 </ul>
             </div>
