@@ -21,3 +21,10 @@
 .h-fit {
     height: fit-content;
 }
+html{
+    min-height: 100%;
+    position: relative;
+}
+main{
+    margin-bottom: 100px;
+}

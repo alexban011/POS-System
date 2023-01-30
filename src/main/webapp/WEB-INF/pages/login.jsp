@@ -10,7 +10,7 @@
                         <h1 class="h3  font-weight-normal">Sign in</h1>
                     </div>
                     <form class="form-signin p-3" method="POST" action="j_security_check">
-                        <div class="p-2 m">
+                        <div class="p-2">
                             <label for="username" class="sr-only">Username</label>
                             <input type="text" id="username" name="j_username" class="form-control"
                                    placeholder="Username"
