@@ -59,7 +59,7 @@ public class CarsBean {
         Car car = new Car();
 
         User user = entityManager.find(User.class, userId);
-        user.getCars().add(car);
+//        user.getCars().add(car);
 
         car.setLicensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
@@ -94,10 +94,10 @@ public class CarsBean {
         car.setParkingSpot(parkingSpot);
 
         User oldUser = car.getOwner();
-        oldUser.getCars().remove(car);
+//        oldUser.getCars().remove(car);
 
         User user = entityManager.find(User.class, userId);
-        user.getCars().add(car);
+//        user.getCars().add(car);
         car.setOwner(user);
     }
 

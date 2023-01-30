@@ -48,14 +48,15 @@ public class User {
     }
 
     public String password;
-    private Collection<Car> cars;
 
-    @OneToMany(mappedBy = "owner")
-    public Collection<Car> getCars() {
-        return cars;
+    public Job job;
+
+    @ManyToOne
+    public Job getJob() {
+        return job;
     }
 
-    public void setCars(Collection<Car> cars) {
-        this.cars = cars;
+    public void setJob(Job job) {
+        this.job = job;
     }
 }
