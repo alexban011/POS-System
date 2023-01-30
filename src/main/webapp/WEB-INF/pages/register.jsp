@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<t:pageTemplate pageTitle="Login">
+<t:pageTemplate pageTitle="Register">
     <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
         <div class="row w-100 d-flex justify-content-center">
             <div class="col col-11 col-lg-5">
@@ -41,6 +41,7 @@
                         </c:if>
                         <div class="p-2 w-100 d-flex justify-content-center">
                             <button class="btn btn-lg mx-2 btn-primary btn-block" type="submit">Register</button>
+                            <a class="btn btn-lg mx-2 btn-success btn-block" href="${pageContext.request.contextPath}/Login">Log in</a>
                         </div>
                     </form>
                 </div>

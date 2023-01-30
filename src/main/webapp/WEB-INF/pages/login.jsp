@@ -29,7 +29,7 @@
                         </c:if>
                         <div class="p-2 w-100 d-flex justify-content-center">
                             <button class="btn btn-lg mx-2 btn-primary btn-block" type="submit">Sign in</button>
-                            <a class="btn btn-lg bg-success mx-2 btn-primary btn-block" href="${pageContext.request.contextPath}/Register">Sign up</a>
+                            <a class="btn btn-lg mx-2 btn-success btn-block" href="${pageContext.request.contextPath}/Register">Sign up</a>
                         </div>
                     </form>
                 </div>
