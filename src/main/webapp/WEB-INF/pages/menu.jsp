@@ -30,28 +30,29 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Employees">Employees</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Return.jsp">Return</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Sell.jsp">Sell</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
+                    <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="${pageContext.request.contextPath}/Cart">
+                                Cart
+                            </a>
+                        </li>
+                    </c:if>
                     <li class="nav-item">
                         <c:choose>
                             <c:when test="${pageContext.request.getRemoteUser() == null}">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Login">Login</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/Login">Login</a>
                             </c:when>
                             <c:otherwise>
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
                             </c:otherwise>
                         </c:choose>
                     </li>
                     <c:if test="${pageContext.request.getRemoteUser() == null}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Register">Register</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/Register">Register</a>
+                        </li>
                     </c:if>
                 </ul>
             </div>

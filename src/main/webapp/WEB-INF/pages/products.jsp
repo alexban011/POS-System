@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+        <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
             <div class="row">
                 <div class="col col-12">
                     <a class="btn btn-success" href="${pageContext.request.contextPath}/AddProduct">Add Product</a>
@@ -78,12 +78,17 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around mt-2">
-                                <a class="btn btn-success" href="${pageContext.request.contextPath}/Sell">Sell</a>
-                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/Return">Return</a>
-                                <a class="btn btn-primary"
-                                   href="${pageContext.request.contextPath}/EditProduct?productId=${product.id}">Edit</a>
-                                <a class="btn btn-danger"
-                                   href="${pageContext.request.contextPath}/DeleteProduct?productId=${product.id}">Delete</a>
+                                <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+                                    <a class="btn btn-success" href="${pageContext.request.contextPath}/AddToCart?productId=${product.id}">Add to cart</a>
+                                    <a class="btn btn-danger"
+                                       href="${pageContext.request.contextPath}/Return">Return</a>
+                                </c:if>
+                                <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('CEO')}">
+                                    <a class="btn btn-primary"
+                                       href="${pageContext.request.contextPath}/EditProduct?productId=${product.id}">Edit</a>
+                                    <a class="btn btn-danger"
+                                       href="${pageContext.request.contextPath}/DeleteProduct?productId=${product.id}">Delete</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>

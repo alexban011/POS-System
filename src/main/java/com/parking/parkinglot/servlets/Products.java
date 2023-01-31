@@ -2,6 +2,7 @@ package com.parking.parkinglot.servlets;
 
 import com.parking.parkinglot.common.ProductDto;
 import com.parking.parkinglot.ejb.ProductsBean;
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -10,6 +11,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.*;
 
+@DeclareRoles({"ADMIN","CEO","CASHIER"})
 @WebServlet(name = "Products", value = "/Products")
 public class Products extends HttpServlet {
     @Inject
