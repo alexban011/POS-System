@@ -23,9 +23,9 @@
                     <div class="py-2">
                         <label for="category" class="sr-only">Category</label>
                         <select class="form-select" id="category" name="category">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="all">All</option>
+                            <option value="food">Food</option>
+                            <option value="electronics">Electronics</option>
                         </select>
                     </div>
                     <div class="py-2">

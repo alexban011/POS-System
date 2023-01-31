@@ -17,20 +17,42 @@ public class Products extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductDto> products = productsBean.findAllProducts();
-        request.setAttribute("products", products);
+
+        String category = request.getParameter("category");
+        List<ProductDto> categoryFilteredProducts = new LinkedList<>();
+        int sizeForCategoryFilter = products.size();
+
+        for (int i = 0; i < sizeForCategoryFilter; i++) {
+            if (category == null || category.equals("all")) {
+                categoryFilteredProducts = products;
+                break;
+            }
+
+            if (Objects.equals(products.get(i).getCategory(), category)) {
+                categoryFilteredProducts.add(products.get(i));
+            }
+        }
+
+        String name = request.getParameter("name");
+        List<ProductDto> nameFilteredProducts = new LinkedList<>();
+        int sizeForNameFilter = categoryFilteredProducts.size();
+
+        for (int i = 0; i < sizeForNameFilter; i++) {
+            if (name == null || name.equals("")) {
+                nameFilteredProducts = categoryFilteredProducts;
+                break;
+            }
+            if (categoryFilteredProducts.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
+                nameFilteredProducts.add(products.get(i));
+            }
+        }
+
+        request.setAttribute("products", nameFilteredProducts);
         request.getRequestDispatcher("/WEB-INF/pages/products.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[]  productIdsAsString = request.getParameterValues("product_ids");
-        if(productIdsAsString != null){
-            List<Long> productIds = new ArrayList<>();
-            for(String productIdAsString : productIdsAsString){
-                productIds.add(Long.parseLong(productIdAsString));
-            }
-            productsBean.deleteProductsByIds(productIds);
-        }
         response.sendRedirect(request.getContextPath()+"/Products");
     }
 }
