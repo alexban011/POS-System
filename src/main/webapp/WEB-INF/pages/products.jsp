@@ -13,7 +13,7 @@
         </c:if>
         <div class="row">
             <div class="col col-12 col-md-6 col-lg-4">
-                <form class="form-signin p-3">
+                <form method="post" class="form-signin p-3">
                     <div class="py-2">
                         <label for="name" class="sr-only">Name</label>
                         <input type="text" id="name" name="name" class="form-control"
@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center g-3">
             <c:forEach var="product" items="${products}">
-                <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="col col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -57,61 +57,16 @@
                                     <p>${product.price} lei</p>
                                 </div>
                             </div>
+                            <div class="d-flex justify-content-around mt-2">
+                                <a class="btn btn-success" href="${pageContext.request.contextPath}/Sell">Sell</a>
+                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/Return">Return</a>
+                                <a class="btn btn-primary" href="${pageContext.request.contextPath}/EditProduct?productId=${product.id}">Edit</a>
+                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/EditDelete?productId=${product.id}">Delete</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </c:forEach>
         </div>
-
     </div>
-
-    <%--    <form method="POST" action="${pageContext.request.contextPath}/Products">--%>
-    <%--        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">--%>
-    <%--            <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddProduct">Add Car</a>--%>
-    <%--            <button class="btn btn-danger" type="submit">Delete Products</button>--%>
-    <%--        </c:if>--%>
-    <%--        <div class="container text-center">--%>
-    <%--            <div class="row">--%>
-    <%--                <div class="col">--%>
-    <%--                    Nume produs--%>
-    <%--                </div>--%>
-    <%--                <div class="col">--%>
-    <%--                    Pret--%>
-    <%--                </div>--%>
-    <%--                <div class="col">--%>
-    <%--                    Cantitate--%>
-    <%--                </div>--%>
-    <%--                <div class="col">--%>
-    <%--                    Categorie--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
-    <%--            <c:forEach var="product" items="${products}">--%>
-    <%--                <div class="row">--%>
-    <%--                    <div class="col">--%>
-    <%--                        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">--%>
-    <%--                            <input type="checkbox" name="products_ids" value="${product.id}" />--%>
-    <%--                        </c:if>--%>
-    <%--                    </div>--%>
-    <%--                    <div class="col">--%>
-    <%--                            ${product.name}--%>
-    <%--                    </div>--%>
-    <%--                    <div class="col">--%>
-    <%--                            ${product.price}--%>
-    <%--                    </div>--%>
-    <%--                    <div class="col">--%>
-    <%--                            ${product.quantity}--%>
-    <%--                    </div>--%>
-    <%--                    <div class="col">--%>
-    <%--                            ${product.category}--%>
-    <%--                    </div>--%>
-    <%--                    <div class="col">--%>
-    <%--                        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">--%>
-    <%--                            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditCar?id=${product.id}">Edit Product</a>--%>
-    <%--                        </c:if>--%>
-    <%--                    </div>--%>
-    <%--                </div>--%>
-    <%--            </c:forEach>--%>
-    <%--        </div>--%>
-    <%--    </form>--%>
-
 </t:pageTemplate>
