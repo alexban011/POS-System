@@ -48,9 +48,11 @@
                             </c:otherwise>
                         </c:choose>
                     </li>
+                    <c:if test="${pageContext.request.getRemoteUser() == null}">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Register">Register</a>
                     </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
