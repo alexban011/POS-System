@@ -48,15 +48,4 @@ public class User {
     }
 
     public String password;
-
-    public Job job;
-
-    @ManyToOne
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
 }

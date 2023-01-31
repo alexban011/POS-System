@@ -1,6 +1,8 @@
 package com.parking.parkinglot.ejb;
 
+import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.UserDto;
+import com.parking.parkinglot.entities.Car;
 import com.parking.parkinglot.entities.User;
 import com.parking.parkinglot.entities.UserGroup;
 import jakarta.ejb.EJBException;
@@ -37,6 +39,18 @@ public class UserBean {
         }
     }
 
+    public User findById(String username) {
+        LOG.info("findbyId");
+        try {
+            TypedQuery<User> typedQuery =
+                    entityManager.createQuery("SELECT u FROM User u WHERE u.email = :username", User.class)
+                            .setParameter("username", username);
+            return typedQuery.getSingleResult();
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
     public List<UserDto> copyUsersToDto(List<User> users) {
         List<UserDto> userDto = new LinkedList<UserDto>();
 
@@ -50,7 +64,6 @@ public class UserBean {
 
         return userDto;
     }
-
 
     public void createUser(String username, String email, String password, Collection<String> groups) {
         LOG.info("createUser");

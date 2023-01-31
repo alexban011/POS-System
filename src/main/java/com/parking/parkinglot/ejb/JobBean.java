@@ -79,6 +79,19 @@ public class JobBean {
         }
     }
 
+    public Job findByJobTitle(String jobTitle) {
+        LOG.info("findJobByJobTitle");
+        try {
+            TypedQuery<Job> typedQuery =
+                    entityManager.createQuery("SELECT j FROM Job j WHERE j.jobTitle = :jobTitle", Job.class)
+                            .setParameter("jobTitle", jobTitle);
+            List<Job> jobs = typedQuery.getResultList();
+            return jobs.get(0);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
     public void updateJob(
             Long jobId,
             String jobTitle
@@ -100,6 +113,22 @@ public class JobBean {
                 Job job = entityManager.find(Job.class, jobId);
                 entityManager.remove(job);
             }
+
+            userTransaction.commit();
+        } catch (Exception e) {
+            userTransaction.rollback();
+        }
+    }
+
+    public void deleteJobById(Long jobId) throws NamingException, SystemException, NotSupportedException {
+        LOG.info("deleteJobById");
+        InitialContext initialContext = new InitialContext();
+        UserTransaction userTransaction = (UserTransaction) initialContext.lookup("java:comp/UserTransaction");
+        userTransaction.begin();
+
+        try {
+            Job job = entityManager.find(Job.class, jobId);
+            entityManager.remove(job);
 
             userTransaction.commit();
         } catch (Exception e) {

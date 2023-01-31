@@ -30,7 +30,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Jobs">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Employees.jsp">Employees</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Employees">Employees</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Return.jsp">Return</a>
