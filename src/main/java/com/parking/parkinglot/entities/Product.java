@@ -1,9 +1,6 @@
 package com.parking.parkinglot.entities;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
@@ -61,5 +58,15 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    private ProductPhoto photo;
+    @OneToOne(mappedBy = "product", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    public ProductPhoto getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(ProductPhoto photo) {
+        this.photo = photo;
     }
 }

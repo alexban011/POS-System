@@ -1,7 +1,9 @@
 package com.parking.parkinglot.ejb;
 
 import com.parking.parkinglot.common.ProductDto;
+import com.parking.parkinglot.common.ProductPhotoDto;
 import com.parking.parkinglot.entities.Product;
+import com.parking.parkinglot.entities.ProductPhoto;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -101,5 +103,56 @@ public class ProductsBean {
             Product product = entityManager.find(Product.class, productId);
             entityManager.remove(product);
         }
+    }
+    public void addPhotoToProduct(Long productId, String filename, String fileType, byte[] fileContent){
+        LOG.info("addPhotoToProduct");
+        ProductPhoto photo = new ProductPhoto();
+        photo.setFilename(filename);
+        photo.setFileType(fileType);
+        photo.setFileContent(fileContent);
+
+        Product product = entityManager.find(Product.class, productId);
+        if(product.getPhoto()!=null){
+            entityManager.remove(product.getPhoto());
+        }
+        product.setPhoto(photo);
+
+        photo.setProduct(product);
+        entityManager.persist(photo);
+    }
+
+    public ProductPhotoDto findPhotoByProductId(Integer productId){
+        List<ProductPhoto> photos = entityManager
+                .createQuery("SELECT p FROM ProductPhoto p where p.product.id = :id", ProductPhoto.class)
+                .setParameter("id", productId).getResultList();
+        if(photos.isEmpty()){
+            return null;
+        }
+        ProductPhoto photo = photos.get(0);
+        return new ProductPhotoDto(photo.getId(), photo.getFilename(), photo.getFileType(), photo.getFileContent());
+    }
+
+    public ProductDto findByName(String productName){
+        ProductDto product = null;
+        List<ProductDto> allProducts = findAllProducts();
+
+        for(ProductDto allProduct : allProducts){
+            if(Objects.equals(allProduct.getName(), productName)){
+                product = allProduct;
+            }
+        }
+        return product;
+    }
+
+    public ProductDto returnCategory(String productCategory){
+        ProductDto product = null;
+        List<ProductDto> allProducts = findAllProducts();
+
+        for(ProductDto allProduct : allProducts){
+            if(Objects.equals(allProduct.getCategory(), productCategory)){
+                product = allProduct;
+            }
+        }
+        return product;
     }
 }
