@@ -83,7 +83,7 @@
                                 <a class="btn btn-primary"
                                    href="${pageContext.request.contextPath}/EditProduct?productId=${product.id}">Edit</a>
                                 <a class="btn btn-danger"
-                                   href="${pageContext.request.contextPath}/EditDelete?productId=${product.id}">Delete</a>
+                                   href="${pageContext.request.contextPath}/DeleteProduct?productId=${product.id}">Delete</a>
                             </div>
                         </div>
                     </div>
