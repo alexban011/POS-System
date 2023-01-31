@@ -28,3 +28,7 @@ html{
 main{
     margin-bottom: 100px;
 }
+#filterForm{
+    max-width: 30em;
+    width: 100%;
+}
