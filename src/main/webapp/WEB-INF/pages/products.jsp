@@ -13,7 +13,7 @@
         </c:if>
         <div class="row">
             <div class="col col-12 col-md-6 col-lg-4">
-                <form method="post" class="form-signin p-3">
+                <form method="get" class="form-signin p-3">
                     <div class="py-2">
                         <label for="name" class="sr-only">Name</label>
                         <input type="text" id="name" name="name" class="form-control"
