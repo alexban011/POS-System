@@ -8,6 +8,9 @@
                 <h1 class="h3  font-weight-normal">Products</h1>
             </div>
         </div>
+        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+            <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddProduct">Add Product</a>
+        </c:if>
         <div class="row">
             <div class="col col-12 col-md-6 col-lg-4">
                 <form class="form-signin p-3">
