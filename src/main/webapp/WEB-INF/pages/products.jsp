@@ -86,7 +86,7 @@
                                        href="${pageContext.request.contextPath}/AddToCart?productId=${product.id}">Add
                                         to cart</a>
                                     <a class="btn btn-danger"
-                                       href="${pageContext.request.contextPath}/Return">Return</a>
+                                       href="${pageContext.request.contextPath}/Return?productId=${product.id}">Return</a>
                                 </c:if>
                                 <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('CEO')}">
                                     <a class="btn btn-primary"
