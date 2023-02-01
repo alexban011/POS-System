@@ -74,12 +74,17 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <p>${product.price} lei</p>
+                                    <div>
+                                        <p>${product.price} lei</p>
+                                        <p>${product.quantity} buc</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around mt-2">
                                 <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
-                                    <a class="btn btn-success" href="${pageContext.request.contextPath}/AddToCart?productId=${product.id}">Add to cart</a>
+                                    <a class="btn btn-success"
+                                       href="${pageContext.request.contextPath}/AddToCart?productId=${product.id}">Add
+                                        to cart</a>
                                     <a class="btn btn-danger"
                                        href="${pageContext.request.contextPath}/Return">Return</a>
                                 </c:if>
