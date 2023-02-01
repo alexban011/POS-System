@@ -10,6 +10,5 @@
             <p>Pagina asta ar arata defapt ca cea de Users de la parkinglot: Lista cu toti angajatii, posibilitatea de a
                 selecta mai multi angajati iar angajatii sa aibe butoane de edit pentru a putea schimba jobul/salariul</p>
         </c:if>
-
     </form>
 </t:pageTemplate>
