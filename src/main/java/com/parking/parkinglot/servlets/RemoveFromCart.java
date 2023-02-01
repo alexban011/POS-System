@@ -4,6 +4,8 @@ import com.parking.parkinglot.common.CartDto;
 import com.parking.parkinglot.ejb.CartBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.HttpConstraint;
+import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"CASHIER", "ADMIN"}))
 @WebServlet(name = "RemoveFromCart", value = "/RemoveFromCart")
 public class RemoveFromCart extends HttpServlet {
 

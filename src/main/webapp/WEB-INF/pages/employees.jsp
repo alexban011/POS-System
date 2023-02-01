@@ -4,7 +4,7 @@
 <t:pageTemplate pageTitle="Jobs">
     <h1>Jobs</h1>
     <form method="POST" action="${pageContext.request.contextPath}/Employees">
-        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+        <c:if test="${pageContext.request.isUserInRole('HR') || pageContext.request.isUserInRole('ADMIN')}">
             <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddEmployee">Add employee</a>
             <button class="btn btn-danger" type="submit">Delete Jobs</button>
             <p>Pagina asta ar arata defapt ca cea de Users de la parkinglot: Lista cu toti angajatii, posibilitatea de a

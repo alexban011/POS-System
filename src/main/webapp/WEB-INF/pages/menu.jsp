@@ -26,13 +26,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Jobs">Posts</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Employees">Employees</a>
-                    </li>
+                    <c:if test="${pageContext.request.isUserInRole('HR') || pageContext.request.isUserInRole('ADMIN')}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/Employees">Employees</a>
+                        </li>
+                    </c:if>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
-                    <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+                    <c:if test="${pageContext.request.isUserInRole('CASHIER') || pageContext.request.isUserInRole('ADMIN')}">
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="${pageContext.request.contextPath}/Cart">
                                 Cart

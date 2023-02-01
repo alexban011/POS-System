@@ -21,7 +21,7 @@ import javax.naming.NamingException;
 import java.io.IOException;
 import java.util.List;
 
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"HR", "ADMIN"}))
 @WebServlet(name = "AddEmployee", value = "/AddEmployee")
 public class AddEmployee extends HttpServlet {
 

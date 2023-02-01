@@ -12,7 +12,7 @@
             <c:forEach var="job" items="${jobs}">
                 <div class="row">
                     <div class="col">
-                        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+                        <c:if test="${pageContext.request.isUserInRole('HR') || pageContext.request.isUserInRole('ADMIN')}">
                             <input type="checkbox" name="job_ids" value="${job.id}" />
                         </c:if>
                     </div>

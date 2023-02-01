@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-@DeclareRoles({"ADMIN","CEO","CASHIER"})
+@DeclareRoles({"ADMIN","CEO","CASHIER","HR"})
 @WebServlet(name = "Products", value = "/Products")
 public class Products extends HttpServlet {
     @Inject
