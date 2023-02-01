@@ -5,6 +5,7 @@ import com.parking.parkinglot.entities.Employee;
 import com.parking.parkinglot.entities.Job;
 import com.parking.parkinglot.entities.User;
 import jakarta.ejb.EJBException;
+import jakarta.jws.soap.SOAPBinding;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -42,37 +43,26 @@ public class EmployeeBean {
         List<EmployeeDto> employeeDtos = new LinkedList<>();
 
         for (Employee employee : employees) {
-            EmployeeDto dto = new EmployeeDto(
-                    employee.getId(),
-                    employee.getUser(),
-                    employee.getJob());
+            EmployeeDto dto = new EmployeeDto(employee.getId(), employee.getUser().getUsername(), employee.getJob().getJobTitle(), employee.getSalary());
             employeeDtos.add(dto);
         }
 
         return employeeDtos;
     }
 
-    public void createEmployee(User user, Job job, Long salary) throws NamingException, SystemException, NotSupportedException {
+    public void createEmployee(Long userId, Long jobId, Long salary){
         LOG.info("createEmployee");
-        InitialContext initialContext = new InitialContext();
-        UserTransaction userTransaction = (UserTransaction) initialContext.lookup("java:comp/UserTransaction");
-        userTransaction.begin();
 
-        try {
-            Employee employee = new Employee();
+        Employee employee = new Employee();
 
-            employee.setUser(user);
-            employee.setJob(job);
-            employee.setSalary(salary);
+        User user = entityManager.find(User.class, userId);
+        employee.setUser(user);
+        Job job = entityManager.find(Job.class, jobId);
+        employee.setJob(job);
+        employee.setSalary(salary);
 
-            entityManager.persist(employee);
+        entityManager.persist(employee);
 
-            userTransaction.commit();
-        } catch (Exception e) {
-            if (userTransaction.getStatus()== Status.STATUS_ACTIVE){
-                userTransaction.rollback();
-            }
-        }
     }
 
     public EmployeeDto findById(Long employeeId) {
@@ -82,7 +72,7 @@ public class EmployeeBean {
                     entityManager.createQuery("SELECT j FROM Job j WHERE j.id = :employeeId", Employee.class)
                             .setParameter("employeeId", employeeId);
             Employee employee = typedQuery.getSingleResult();
-            return new EmployeeDto(employee.getId(), employee.getUser(), employee.getJob());
+            return new EmployeeDto(employee.getId(), employee.getUser().getUsername(), employee.getJob().getJobTitle(), employee.getSalary());
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
@@ -90,12 +80,16 @@ public class EmployeeBean {
 
     public void updateEmployee(
             Long employeeId,
-            Job job,
+            Long userId,
+            Long jobId,
             Long salary
     ) {
         LOG.info("updateJob");
 
         Employee employee = entityManager.find(Employee.class, employeeId);
+        User user = entityManager.find(User.class, userId);
+        employee.setUser(user);
+        Job job = entityManager.find(Job.class, jobId);
         employee.setJob(job);
         employee.setSalary(salary);
     }

@@ -2,36 +2,42 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:pageTemplate pageTitle="AddEmployees">
-    <h1>Add Jobs</h1>
-    <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/AddEmployee">
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="username">Employee user:</label>
-                <input class="form-control" type="text" id="username" name="username"><br><br>
-                <div class="invalid-feedback">
-                    user is required.
+    <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
+        <div class="row w-100 d-flex justify-content-center">
+            <div class="col col-11 col-lg-5">
+                <div class="bg-light shadow-lg rounded-3">
+                    <div class="rounded-top shadow-sm py-1 px-3">
+                        <h1 class="h3  font-weight-normal">Add Employee</h1>
+                    </div>
+                    <form class="needs-validation p-3" novalidate method="POST" action="${pageContext.request.contextPath}/AddEmployee">
+                        <div class="p-2">
+                            <label for="userId" class="sr-only">Username</label>
+                            <select required class="form-select" id="userId" name="userId">
+                                <c:forEach var="user" items="${users}">
+                                    <option value="${user.id}">${user.username}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="p-2">
+                            <label for="jobId" class="sr-only">Job</label>
+                            <select required class="form-select" id="jobId" name="jobId">
+                                <c:forEach var="job" items="${jobs}">
+                                    <option value="${job.id}">${job.jobTitle}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="p-2">
+                            <label for="salary" class="sr-only">Salary</label>
+                            <input type="text" id="salary" name="salary" class="form-control"
+                                   placeholder="Salary"
+                                   required/>
+                        </div>
+                        <div class="p-2 w-100 d-flex justify-content-center">
+                            <button class="btn btn-lg mx-2 btn-primary btn-block" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="jobTitle">job title:</label>
-                <input class="form-control" type="text" id="jobTitle" name="jobTitle"><br><br>
-                <div class="invalid-feedback">
-                    user is required.
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="salary">salary:</label>
-                <input class="form-control" type="text" id="salary" name="salary"><br><br>
-                <div class="invalid-feedback">
-                    user is required.
-                </div>
-            </div>
-            Pagina asta trb sa te lase sa selectezi un user (ii scrie username-ul), un job si salariul
         </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" name="submit">
-            </div>
-        </div>
-    </form>
+    </div>
 </t:pageTemplate>

@@ -1,6 +1,8 @@
 package com.parking.parkinglot.servlets;
 
 import com.parking.parkinglot.common.EmployeeDto;
+import com.parking.parkinglot.common.JobDto;
+import com.parking.parkinglot.common.UserDto;
 import com.parking.parkinglot.ejb.EmployeeBean;
 import com.parking.parkinglot.ejb.JobBean;
 import com.parking.parkinglot.ejb.UserBean;
@@ -34,27 +36,22 @@ public class AddEmployee extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EmployeeDto> employees = employeeBean.findAllEmployees();
-        request.setAttribute("employees", employees);
+        List<JobDto> jobs = jobBean.findAllJobs();
+        List<UserDto> users = userBean.findAllUsers();
+
+        request.setAttribute("jobs", jobs);
+        request.setAttribute("users", users);
+
         request.getRequestDispatcher("/WEB-INF/pages/addEmployee.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String jobTitle = request.getParameter("jobTitle");
+        String userId = request.getParameter("userId");
+        String jobId = request.getParameter("jobId");
         String salary = request.getParameter("salary");
 
-        try {
-            // TODO: validate user input
-            User user = userBean.findById(username);
-            Job job = jobBean.findByJobTitle(jobTitle);
-
-            employeeBean.createEmployee(user, job, Long.valueOf(salary));
-            jobBean.deleteJobById(job.getId());
-        } catch (NamingException | SystemException | NotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+        employeeBean.createEmployee(Long.parseLong(userId), Long.parseLong(jobId), Long.parseLong(salary));
 
         response.sendRedirect(request.getContextPath() + "/Employees");
     }
