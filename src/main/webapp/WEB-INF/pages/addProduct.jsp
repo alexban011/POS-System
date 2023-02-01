@@ -32,11 +32,12 @@
                     </div>
                 </div>
                 <div class="col col-12 col-md-6 p-2">
-                    <label for="category">Category:</label>
-                    <input class="form-control" type="text" required id="category" name="category">
-                    <div class="invalid-feedback">
-                        Category is required.
-                    </div>
+                    <label for="category" class="sr-only">Category</label>
+                    <select class="form-select" id="category" name="category">
+                        <option value="all">All</option>
+                        <option value="food">Food</option>
+                        <option value="electronics">Electronics</option>
+                    </select>
                 </div>
             </div>
             <div class="row g-3">
