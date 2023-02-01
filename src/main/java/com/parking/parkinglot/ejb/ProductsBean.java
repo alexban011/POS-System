@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 @Stateless
 public class ProductsBean {
-    private static final Logger LOG = Logger.getLogger(CarsBean.class.getName());
+    private static final Logger LOG = Logger.getLogger(ProductsBean.class.getName());
 
     @PersistenceContext
     EntityManager entityManager;

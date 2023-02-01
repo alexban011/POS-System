@@ -1,8 +1,6 @@
 package com.parking.parkinglot.servlets;
 
 import com.parking.parkinglot.common.EmployeeDto;
-import com.parking.parkinglot.common.JobDto;
-import com.parking.parkinglot.common.UserDto;
 import com.parking.parkinglot.ejb.EmployeeBean;
 import com.parking.parkinglot.ejb.JobBean;
 import com.parking.parkinglot.ejb.UserBean;

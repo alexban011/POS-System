@@ -1,8 +1,9 @@
 package com.parking.parkinglot.entities;
 
-import jakarta.persistence.*;
-
-import java.util.Collection;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class User {

@@ -1,7 +1,6 @@
 package com.parking.parkinglot.ejb;
 
 import com.parking.parkinglot.common.EmployeeDto;
-import com.parking.parkinglot.common.JobDto;
 import com.parking.parkinglot.entities.Employee;
 import com.parking.parkinglot.entities.Job;
 import com.parking.parkinglot.entities.User;

@@ -2,8 +2,6 @@ package com.parking.parkinglot.common;
 
 import com.parking.parkinglot.entities.Job;
 import com.parking.parkinglot.entities.User;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 
 public class EmployeeDto {
     private Long id;

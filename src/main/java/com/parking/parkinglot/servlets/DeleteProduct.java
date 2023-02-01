@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 //@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))

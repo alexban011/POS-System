@@ -1,12 +1,15 @@
 package com.parking.parkinglot.servlets;
 
 import com.parking.parkinglot.common.ProductDto;
-import com.parking.parkinglot.common.ProductPhotoDto;
 import com.parking.parkinglot.ejb.ProductsBean;
 import jakarta.inject.Inject;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 @MultipartConfig

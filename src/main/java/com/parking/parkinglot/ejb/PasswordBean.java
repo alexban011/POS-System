@@ -1,15 +1,10 @@
 package com.parking.parkinglot.ejb;
 
-import com.parking.parkinglot.entities.User;
-import com.parking.parkinglot.entities.UserGroup;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
