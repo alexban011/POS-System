@@ -35,9 +35,21 @@ public class CartBean implements Serializable {
     }
 
     public CartDto removeProduct(Long productId){
-        cart.setProducts((ArrayList<ProductDto>) cart.getProducts().stream().filter(x->x.getId()!=productId));
+        ArrayList<ProductDto> products = cart.getProducts();
+        for(ProductDto prod: products){
+            if (productId.equals(prod.getId())){
+                products.remove(prod);
+                break;
+            }
+        }
+        cart.setProducts(products);
         cart.setTotalPrice(calculateTotal());
         return cart;
+    }
+
+    public void emptyCart(){
+        cart.setProducts(new ArrayList<>());
+        cart.setTotalPrice(0);
     }
 
     private float calculateTotal(){

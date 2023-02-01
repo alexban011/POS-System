@@ -32,3 +32,13 @@ main{
     max-width: 30em;
     width: 100%;
 }
+.w-10em{
+    width: 6em;
+}
+.delete-button{
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+.delete-button:hover{
+    transform: scale(1.5);
+}
