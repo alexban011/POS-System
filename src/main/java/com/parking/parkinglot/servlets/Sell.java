@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"CASHIER", "ADMIN"}))
 @WebServlet(name = "Sell", value = "/Sell")
 public class Sell extends HttpServlet {
 
