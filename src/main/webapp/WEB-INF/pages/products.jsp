@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around mt-2">
-                                <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+                                <c:if test="${pageContext.request.isUserInRole('CASHIER') || pageContext.request.isUserInRole('ADMIN')}">
                                     <a class="btn btn-success"
                                        href="${pageContext.request.contextPath}/AddToCart?productId=${product.id}">Add
                                         to cart</a>
